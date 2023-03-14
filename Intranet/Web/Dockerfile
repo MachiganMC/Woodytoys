@@ -1,4 +1,4 @@
-FROM nginx
+FROM webdevops/php-nginx
 
 COPY default.conf /etc/nginx/conf.d/
 COPY Project/ /var/www/html/
