@@ -1,18 +1,21 @@
-version: "3" # Version de Compose
-name: woodytoys # Nom du projet
+version: "3"  
 services:
-  web: # Nom du conteneur
-    image: nginx # Image du conteneur
-    links: # Liaison avec d'autres conteneurs
-      - db:database
-    ports: # Port h^ote -> Port conteneur
+  web: 
+    build:
+      context: ./Intranet/Web
+      dockerfile: Dockerfile
+    ports:
       - 80:80
       - 443:443
-    networks: # R´eseau associ´e
-      - trustedZone
+    networks:
+      trusted-zone:
+        ipv4_address: 192.168.0.2
+
   db:
-    image: mysql:5.7
-    environment: # Variables d'environnements
+    build:
+      context: ./Intranet/DB
+      dockerfile: Dockerfile
+    environment: 
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: database
       MYSQL_USER: user
@@ -20,21 +23,32 @@ services:
     volumes:
       - db-data:/var/lib/mysql
     networks:
-      - trustedZone
+      trusted-zone:
+        ipv4_address: 192.168.0.3
+
   dns:
-    image: ubuntu/bind9
-    ports:
-      - 53:53/udp
-      - 53:53
+    build:
+      context: ./Intranet/DNS
+      dockerfile: Dockerfile
     networks:
-      - trustedZone
+      trusted-zone:
+        ipv4_address: 192.168.0.4
+
   soa:
-    image: ubuntu/bind9
-    ports:
-      - 53:53/udp
-      - 53:53
+    build:
+      context: ./Intranet/SOA
+      dockerfile: Dockerfile
     networks:
-      - trustedZone
+      trusted-zone:
+        ipv4_address: 192.168.0.5
+
 networks:
-  trustedZone: ??
-  other-net: # Autres d´efinitions de r´eseaux
+  trusted-zone:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24
+          gateway: 192.168.0.1
+
+volumes:
+  db-data:
