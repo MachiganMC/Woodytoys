@@ -1,0 +1,51 @@
+# Fichier temporaire afin de tester l'envoi/réception
+# de mail
+version: "3"
+services:
+  postfix:
+    build:
+      context: ./SMTP
+      dockerfile: Dockerfile
+    ports:
+      - 1000:25/tcp
+    networks:
+      mail:
+        ipv4_address: 192.168.0.10
+    hostname: localhost
+    dns: 192.168.0.4
+
+  pop-imap:
+    build:
+      context: ./POP-IMAP
+      dockerfile: Dockerfile
+    ports:
+      - 110:110
+      - 143:143 
+    networks:
+      mail:
+        ipv4_address: 192.168.0.11
+
+  contact:
+    build:
+      context: ./Client-Mail-Contact
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      mail:
+        ipv4_address: 192.168.0.12
+
+  b2b:
+    build:
+      context: ./Client-Mail-B2B
+      dockerfile: Dockerfile
+    tty: true
+    networks:
+      mail:
+        ipv4_address: 192.168.0.13
+
+networks:
+  mail:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.0.0/24

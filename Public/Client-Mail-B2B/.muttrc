@@ -1,0 +1,12 @@
+set from="b2b"
+set ssl_starttls=no
+set ssl_force_tls=no
+set smtp_url = "smtp://192.168.0.10:25/"
+
+# Imap settings
+set spoolfile="imap://192.168.0.11:143/"
+set imap_user = "b2b"
+set imap_pass = "b2b" 
+set folder = "imap://b2b/"
+
+set editor = "vim"

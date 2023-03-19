@@ -1,4 +1,4 @@
-version: "3"  
+version: "3.8"  
 services:
   web: 
     build:
@@ -10,6 +10,8 @@ services:
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.2
+    dns:
+      - "192.168.0.4"
 
   db:
     build:
@@ -25,7 +27,8 @@ services:
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.3
-    dns: 192.168.0.4
+    dns: 
+      - "192.168.0.4"
 
   dns:
     build:
@@ -43,11 +46,15 @@ services:
       trusted-zone:
         ipv4_address: 192.168.0.5
 
-  client_test:
-    image: sequenceiq/alpine-dig
+  postfix:
+    build: 
+      context: Public/SMTP
+      dockerfile: Dockerfile
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.6
+    dns:
+      - 192.168.0.4
 
 networks:
   trusted-zone:
