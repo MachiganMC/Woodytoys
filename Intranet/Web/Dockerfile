@@ -1,4 +1,4 @@
-FROM webdevops/php-nginx
+FROM trafex/php-nginx
 
 COPY default.conf /etc/nginx/conf.d/
 COPY Project/ /var/www/html/
