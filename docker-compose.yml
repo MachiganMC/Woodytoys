@@ -1,4 +1,4 @@
-version: "3.8"  
+version: "3"  
 services:
   web: 
     build:
@@ -10,8 +10,7 @@ services:
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.2
-    dns:
-      - "192.168.0.4"
+    dns: 192.168.0.4
 
   db:
     build:
@@ -22,25 +21,24 @@ services:
       MYSQL_DATABASE: database
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-    volumes:
-      - db-data:/var/lib/mysql
+        #volumes:
+        #- ./:/var/lib/mysql
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.3
-    dns: 
-      - "192.168.0.4"
+    dns: 192.168.0.4
 
-  dns:
+  soa:
     build:
-      context: ./Intranet/DNS
+      context: ./Intranet/SOA
       dockerfile: Dockerfile
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.4
 
-  soa:
+  dns:
     build:
-      context: ./Intranet/SOA
+      context: ./Intranet/DNS
       dockerfile: Dockerfile
     networks:
       trusted-zone:
@@ -53,8 +51,37 @@ services:
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.6
-    dns:
-      - 192.168.0.4
+    dns: 192.168.0.4
+
+  dovecot:
+    build:
+      context: Public/POP-IMAP
+      dockerfile: Dockerfile
+    networks:
+      trusted-zone:
+        ipv4_address: 192.168.0.7
+    dns: 192.168.0.4
+
+  contact:
+    build:
+      context: Public/Client-Mail-Contact
+      dockerfile: Dockerfile
+    networks:
+      trusted-zone:
+        ipv4_address: 192.168.0.8
+    dns: 192.168.0.4
+    tty: true
+
+  b2b:
+    build:
+      context: Public/Client-Mail-B2B
+      dockerfile: Dockerfile
+    networks:
+      trusted-zone:
+        ipv4_address: 192.168.0.9
+    dns: 192.168.0.4
+    tty: true
+
 
 networks:
   trusted-zone:
@@ -64,5 +91,6 @@ networks:
         - subnet: 192.168.0.0/24
           #          gateway: 192.168.0.1
 
-volumes:
-  db-data:
+          #volumes:
+  #  db-data:
+  #mail-user:

@@ -6,13 +6,11 @@ services:
     build:
       context: ./SMTP
       dockerfile: Dockerfile
-    ports:
-      - 1000:25/tcp
     networks:
       mail:
         ipv4_address: 192.168.0.10
     hostname: localhost
-    dns: 192.168.0.4
+    dns: "192.168.0.4"
 
   pop-imap:
     build:
