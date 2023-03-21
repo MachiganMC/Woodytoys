@@ -5,40 +5,16 @@
 <body>
 <?php
 echo "a";
-$servername = "172.17.0.3";
+$servername = "192.168.0.3";
 $username = "root";
 $password = "root";
 // Create connection
 $conn = new MySQLi($servername, $username, $password);
 // Check connection
 if ($conn -> connect_error) {;
-die("Connection failed: " . mysqli_connect_error());;
+echo "NOT Connected successfully";;
 }
 echo "Connected successfully";
 ?>
 </body>
 </html>
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-- index.php 1/20 5%
