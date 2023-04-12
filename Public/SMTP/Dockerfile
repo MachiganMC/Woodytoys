@@ -14,10 +14,15 @@ COPY main.cf /etc/postfix/
 
 RUN useradd -m -p contact contact
 RUN useradd -m -p b2b b2b
+COPY resolv.conf /etc/
+RUN apt-get update
+RUN apt-get install -y vim
+
 
 VOLUME /var/mail /home
 
 EXPOSE 25
 
 CMD ["/usr/lib/postfix/sbin/master", "-d"]
+
 

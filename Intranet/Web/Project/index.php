@@ -9,12 +9,25 @@ $servername = "192.168.0.3";
 $username = "root";
 $password = "root";
 // Create connection
-$conn = new MySQLi($servername, $username, $password);
-// Check connection
-if ($conn -> connect_error) {;
-echo "NOT Connected successfully";;
+
+try
+{
+    if ($conn = mysqli_connect($servername, $username, $password))
+    {
+        echo "Connected successfully";
+    }
+    else
+    {
+        throw new Exception('Unable to connect');
+    }
 }
-echo "Connected successfully";
+catch( \Exception $ex )
+{
+    echo $e->getMessage();
+	echo "NOT Connected successfully";
+}
+
+
 ?>
 </body>
 </html>

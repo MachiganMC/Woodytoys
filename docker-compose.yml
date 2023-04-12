@@ -5,8 +5,7 @@ services:
       context: ./Intranet/Web
       dockerfile: Dockerfile
     ports:
-      - 80:80
-      - 443:443
+      - 80:8080
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.2
@@ -19,8 +18,8 @@ services:
     environment: 
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: database
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
         #volumes:
         #- ./:/var/lib/mysql
     networks:
