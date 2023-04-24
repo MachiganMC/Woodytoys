@@ -44,22 +44,13 @@ services:
       trusted-zone:
         ipv4_address: 192.168.0.5
 
-  postfix:
+  mail:
     build: 
-      context: Public/SMTP
+      context: Public/Mail-Server
       dockerfile: Dockerfile
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.6
-    dns: 192.168.0.4
-
-  dovecot:
-    build:
-      context: Public/POP-IMAP
-      dockerfile: Dockerfile
-    networks:
-      trusted-zone:
-        ipv4_address: 192.168.0.7
     dns: 192.168.0.4
 
   contact:

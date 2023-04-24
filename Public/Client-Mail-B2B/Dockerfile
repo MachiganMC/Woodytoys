@@ -11,7 +11,7 @@ RUN apt-get install -y iputils-ping
 RUN apt-get install -y telnet
 RUN apt-get install -y dnsutils
 RUN apt-get install -y links
-RUN useradd -m -p b2b b2b
+RUN useradd -rm -p $(openssl passwd -1 b2b) b2b
 
 COPY .muttrc /home/b2b/
 
