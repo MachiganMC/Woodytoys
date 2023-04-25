@@ -19,7 +19,7 @@ RUN chmod 111 start.sh
 RUN useradd -rm -p $(openssl passwd -1 contact) contact
 RUN useradd -rm -p $(openssl passwd -1 b2b) b2b
 
-VOLUME /var/mail /home
+#VOLUME /home
 
 EXPOSE 25
 EXPOSE 110
