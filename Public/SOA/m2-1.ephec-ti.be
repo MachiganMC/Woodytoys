@@ -1,7 +1,6 @@
-$ORIGIN woodytoys.lab.
+$ORIGIN m2-1.ephec-ti.be.
 $TTL 86400
-@       IN      SOA     soa.pubm2-1.ephec-ti.be.      hostmaster.m2-1.ephec-ti.be. 
-(
+@       IN      SOA     soapub.m2-1.ephec-ti.be.      hostmaster.m2-1.ephec-ti.be. (
                         2001062501 ;
                         21600      ; 
                         3600       ; 
