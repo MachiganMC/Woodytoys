@@ -4,7 +4,7 @@
 </head>
 <body>
 <?php
-echo "a";
+echo "ceci est le site vitrine";
 $servername = "192.168.0.3";
 $username = "root";
 $password = "root";

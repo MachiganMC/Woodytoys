@@ -4,9 +4,6 @@ services:
     build:
       context: ./Intranet/Web
       dockerfile: Dockerfile
-    ports:
-      - 80:8080
-      - 443:443
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.2
@@ -74,6 +71,17 @@ services:
         ipv4_address: 192.168.0.9
     dns: 192.168.0.4
     tty: true
+  webpub: 
+    build:
+      context: ./Public/Web
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      trusted-zone:
+        ipv4_address: 192.168.0.10
+    dns: 192.168.0.4
 
   soapub:
     build:
