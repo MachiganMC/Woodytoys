@@ -89,6 +89,8 @@ services:
     build:
       context: ./Public/SOA
       dockerfile: Dockerfile
+    ports:
+      - 53:53
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.11
