@@ -13,5 +13,5 @@ $TTL 86400
 www	IN      A       192.168.0.10
 b2b IN      A	192.168.0.10
 mail    IN      A       192.168.0.6
-soapub   IN      A       192.168.0.11
+soa   IN      A       192.168.0.4
 

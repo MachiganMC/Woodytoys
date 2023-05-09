@@ -1,12 +1,12 @@
-set from="contact@woodytoys.lab"
+set from="contact@m2-1.ephec-ti.be"
 set ssl_starttls=no
 set ssl_force_tls=no
-set smtp_url = "smtp://mail.woodytoys.lab:25"
+set smtp_url = "smtp://mail.m2-1.ephec-ti.be:25"
 
 # Imap settings
-set spoolfile="imap://contact@mail.woodytoys.lab/"
-set imap_user = "contact@woodytoys.lab"
+set spoolfile="imap://contact@mail.m2-1.ephec-ti.be/"
+set imap_user = "contact@m2-1.ephec-ti.be"
 set imap_pass = "contact"
-set folder = "imap://contact@mail.woodytoys.lab/"
+set folder = "imap://contact@mail.m2-1.ephec-ti.be/"
 
 set editor = "vim"
