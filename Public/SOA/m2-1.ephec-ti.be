@@ -9,9 +9,8 @@ $TTL 86400
 
         IN      NS      soapub.m2-1.ephec-ti.be.
 
-
-www	IN      A       192.168.0.10
-b2b IN      A	192.168.0.10
-mail    IN      A       192.168.0.6
-soapub   IN      A       192.168.0.11
+b2b	IN	A	108.142.167.150
+www	IN      A       108.142.167.150
+mail    IN      A       108.142.167.150
+soapub   IN      A      108.142.167.150
 

@@ -48,9 +48,9 @@ services:
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.6
-    dns: 192.168.0.11
+    dns: 192.168.0.4
     ports:
-      - 25:25
+      - "25:25"
     volumes:
       - mailbox:/home/contact/Maildir
 
@@ -71,7 +71,7 @@ services:
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.9
-    dns: 192.168.0.11
+    dns: 192.168.0.4
     tty: true
   webpub: 
     build:
@@ -90,7 +90,8 @@ services:
       context: ./Public/SOA
       dockerfile: Dockerfile
     ports:
-      - 53:53
+      - "53:53/udp"
+      - "53:53/tcp"
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.11
