@@ -89,14 +89,12 @@ services:
     build:
       context: ./Public/SOA
       dockerfile: Dockerfile
-        #    ports:
-      #      - "53:53/udp"
-        #      - "53:53/tcp"
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
     networks:
       trusted-zone:
         ipv4_address: 192.168.0.11
-    volumes:
-      - dnssec:/var/cache/bind
         
 networks:
   trusted-zone:
@@ -109,4 +107,3 @@ networks:
 volumes:
   db-data:
   mailbox:
-  dnssec:
