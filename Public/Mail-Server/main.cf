@@ -14,3 +14,10 @@ smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject
 maillog_file=/var/log/postfix.log
 #debug_peer_list = m2-1.ephec-ti.be
 #debug_peer_level = 5
+
+
+#ajout secu
+milter_default_action = accept
+milter_protocol = 6
+smtpd_milters = inet:localhost:12345
+non_smtpd_milters = inet:localhost:12345
